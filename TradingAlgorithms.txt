@@ -1,0 +1,17 @@
+Trading Algorithms
+
+First of all when we talk about quantitative trading we can't do the High Frequency Trading HTF raheem mentioned with python and it is ultimately impossible to implement any good HFT trading strategy quantitativeley without millions of dollars in hardware and the brightest most advanced minds in the field, Companies like Renaissance technologies will beat you every single time, a massive giant raking in billions literally started by one of the greatest mathematicians of our time. 
+
+The reason why is the basic rule of financial arbitrage.
+
+1. If there is something you can do to make money no matter how small do it
+
+2. Quantitative funds do this at scale executing thousands of orders a second
+
+3. When anybody does this this smoothes or "corrects the price"
+
+If copper is 100$ in Japan and 50$ in Peru, people will buy and transport it from peru to japan to sell for profit, the change in supply and demand will create an excess in japan and lack in peru, driving Japanese price down, and Peru prices up, until they meet the same say 75$ price and the arbitrage isnt worth it anymore.
+
+4. Hedge funds like Renaissance Tech' will beat you in this every single time they do it in different dimensions than space like in the Japan-Peru Example. They do it with time and and statistical dimensions.
+
+Therefore we can say this is out of the question for the project unless we want to make someting that loses money, as practice programming these very complex things. This would be very valuable to do though a very complex computing science task that personally i am unprepared to face yet.
