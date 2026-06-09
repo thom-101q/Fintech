@@ -35,14 +35,15 @@ PV_T = np.vstack(PV_T)
 
 CashGrid_T = np.zeros((3,1))
 I_0 = 0.01
-for T in T:
-    CashGrid = CashGrid[:,0:T]*(1-I_0) ** T
-    print(CashGrid)
+#for T in T:
+    #CashGrid = CashGrid[:,0:T]*(1-I_0) ** T
+    #CashGrid_T = np.c_[CashGrid_T, CashGrid]
+T = [1, 2, 3]
+for T in [1, 2, 3]:
+    CashGrid = (lambda x: x-T)(CashGrid[:,0:T])
     CashGrid_T = np.c_[CashGrid_T, CashGrid]
+    print(CashGrid_T)
+#print(CashGrid_T)
+    
 
-print(CashGrid_T)
-
-T_0 = 1
-
-
-
+#print(CashGrid)
