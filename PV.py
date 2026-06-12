@@ -4,70 +4,62 @@ import matplotlib.pyplot as plt
 
 Cashflow = 1000
 I = [0.01, 0.05, 0.10]
-I_0 = 0.01
-
-
 T = [1, 2, 3]
-T_0 = 0
 
-print(np.size(T))
-#np.vstack(array1, array2) to stack array
+for x in range(1):
+    I = np.vstack((I, I, I))
+    T = np.vstack((T, T, T))
 
-PV_I = []
-PV_T = []
-PV = []
+
+
 
 CashGrid = np.ones((3, 3)) * Cashflow
-#print(CashGrid)
-#for x in I:
-#    PV_I = np.append(PV_I, Cashflow*(1 - x) ** T_0)
-#    PV_T = np.append(PV_T, Cashflow*(1 - I_0) ** x)
 
-for x in I:
-    PV_I = np.append(PV_I, Cashflow*(1 - x) ** T_0)
-for x in T:
-    PV_T = np.append(PV_T, Cashflow*(1 - I_0) ** x)
+def PV(I, T, Cashflow): #from Itertools
+    return Cashflow * ((1- I)**T)
 
-PV_T = np.vstack(PV_T)
+def product(*iterables, repeat=1):
+    # product('ABCD', 'xy') → Ax Ay Bx By Cx Cy Dx Dy
+    # product(range(2), repeat=3) → 000 001 010 011 100 101 110 111
 
-#print(PV_I)
-# #print(PV_T)
+    if repeat < 0:
+        raise ValueError('repeat argument cannot be negative')
+    pools = [tuple(pool) for pool in iterables] * repeat
 
-# CashGrid_T = np.empty((3,1))
-# print(np.empty((3,1)))
-I_0 = 0.01
-#for T in T:
-    #CashGrid = CashGrid[:,0:T]*(1-I_0) ** T
-    #CashGrid_T = np.c_[CashGrid_T, CashGrid]
-# T = [1, 2, 3]
-# for T in [1, 2, 3]:
-#     CashGrid = (lambda x: x-T)(CashGrid[:,0:T])
-#     CashGrid_T = np.c_[CashGrid_T, CashGrid]
-#     print(CashGrid_T)
-# print(CashGrid_T)
+    result = [[]]
+    for pool in pools:
+        result = [x+[y] for x in result for y in pool]
+
+    for prod in result:
+        yield tuple(prod)
+
+# for I, T in zip(I, T):
+#     #CashGrid[:,:T] = CashGrid[:,:T]*(1 - I) ** T
+#     #CashGrid[:, :] = 
+
+
     
-
-#print(CashGrid)
-
-# for x in T: 
-#     CashGrid[x] = Cashflow*(1 - I_0) ** x
+#     Newcash = PV(I, T, CashGrid[:, T-1:T])
+#     CashGrid[:, T-1:T] = Newcash
+#     Newcash = PV(I, T, CashGrid[T-1:T, :])
+#     CashGrid[T-1:T, :] = Newcash
 #     print(CashGrid)
 
-def PV(I, T, Cashflow):
-    return Cashflow * ((1- I)**T)
-    
+#print(CashGrid[0, 0])
+#print(I[0, 0])
+#print(T[0, 0])
+x = 3
 
-for I, T in zip(I, T):
-    #CashGrid[:,:T] = CashGrid[:,:T]*(1 - I) ** T
-    Newcash = PV(I, T, CashGrid[:, T-1:T])
-    CashGrid[:, T-1:T] = Newcash
-    Newcash = PV(I, T, CashGrid[T-1:T, :])
-    CashGrid[T-1:T, :] = Newcash
-    print(CashGrid)
+y = x
 
+for x, y in product(range(x), range(y)):
+    CashGrid[x, y] = PV(I[x, y], T[x, y], Cashflow)
+    print(CashGrid[x, y])
 
+print(CashGrid)
+# CashGrid[0, 0] = PV(I[0, 0], T[0, 0], CashGrid[0, 0])
 
-
+#print(CashGrid)
 
 if __name__ == "__main__":
     print("Executed")
