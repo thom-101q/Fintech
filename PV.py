@@ -1,7 +1,15 @@
 #!/usr/bin/env python
 
+"""
 
-""" DOCSTRING HERE """
+Rewriting and testing PV.py with better numpy functionality
+
+Creates a numpy array given a set of rates (Percentages) and calculates the time decay for each rate, creating a square matrix
+
+Probem: the matrix is forced to be square meaning number of times = number of rates
+
+
+"""
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -10,10 +18,6 @@ import matplotlib.pyplot as plt
 def PV_equation(I, T, Cashflow): #PV Function discounting cash flows
     return Cashflow / ((1 + I)**T)
 
-
-    
-    
-    
 def PV(Cashflow, Start, End, Sep):
     
     I = np.arange((Start / 100), (End / 100), (Sep / 100))
@@ -41,5 +45,9 @@ PV(1000, 0, 10, 1)
 if __name__ == "__main__":
     print("Executed")
 
+#np.arange
+#np.meshgrid
+#applying PV_equation element wise
+#np.vectorise
 
 
