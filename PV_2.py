@@ -21,6 +21,7 @@ VGrid(Cash, Time, StartRate, EndRate, SepRate)
 """
 
 import numpy as np
+import matplotlib.pyplot as plt
 
 def Vdecay(Rate, Time, Cashflow): #Function for discounting Cash to present value for the flow of Time due to inflation rates
     return Cashflow / ((1 + Rate)**Time)
@@ -48,9 +49,15 @@ def VGrid(Cash, Time, StartRate, EndRate, SepRate):
 
     Timek, Ratek = np.meshgrid(Time, Rate, indexing="ij")
     
-    VdecayGrid = Vdecay(Ratek, Timek, 1000)
+    VdecayGrid = Vdecay(Ratek, Timek, Cash)
+
+    Imaging = plt.contourf(Timek, Ratek, VdecayGrid)
+    plt.colorbar()
+    plt.show()
     
     return VdecayGrid
+
+VGrid(1000, 50, 0, 5, 0.1)
 
 print(VdecayGrid)
 
