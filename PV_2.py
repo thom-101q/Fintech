@@ -16,36 +16,31 @@ import numpy as np
 def Vdecay(Rate, Time, Cashflow): #Function for discounting Cash to present value for the flow of Time due to inflation rates
     return Cashflow / ((1 + Rate)**Time)
 
-def Rate(Start, End, Sep): #Sets up interest rate matrix
-    Rate = np.arange(Start, End, Sep) #I wanna use arange for the rates because i want to make a step/gradient for the rates
+def RateFunc(Start, End, Sep): #Sets up interest rate matrix
+    Rate = np.arange(Start/100, End/100, Sep/100) #I wanna use arange for the rates because i want to make a step/gradient for the rates
 
     return Rate
     
-def Time(Time): #Sets up time matrix
-    Time = np.arange(0, Time, 1) #might aswell use it for TIme too
+def TimeFunc(Time): #Sets up time matrix
+    Time = np.arange(0, Time, 1) 
+    return Time    
+
+#might aswell use it for Time too
 
 #I wanna be able to create a grid, and have it compute Vdecay for each element with corresponding rate and time, i want it to be functional for all times and rates
 #Last time it was forced to be Square limiting usability
 
-#Should remove np.tile if we are doing it element wise CashGrid[i][j]
+#Should remove np.tile if we are doing it element wise 
+Rate = RateFunc(0, 4, 1)
+Time = TimeFunc(50)
 
-Ratek, Timek = np.meshgrid(Rate, Time, indexing="ij")
-for i in range(nx):
-    for j in range(ny):
-        #Treats xv[i, j], yv[i, j]
-        Cashgrid[] = Vdecay(Rate[], Time[], Cashflow)
+Timek, Ratek = np.meshgrid(Time, Rate, indexing="ij")
 
+VdecayGrid = Vdecay(Ratek, Timek, 1000)
 
-
-    # CashGrid = np.ones((I_size, T_size)) * Cashflow
-    
-    # for i in x:
-    #     for j in y:
-    #         CashGrid[i][j] = PV_equation(I[i][j], T[i][j], Cashflow)
-        
-
-print(Cashgrid)
+print(VdecayGrid)
 
 
-
+if  __name__ == "__main__":
+    print()    
 
