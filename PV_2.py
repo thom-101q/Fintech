@@ -49,17 +49,17 @@ def VGrid(Cash, Time, StartRate, EndRate, SepRate):
 
     Timek, Ratek = np.meshgrid(Time, Rate, indexing="ij")
     
-    VdecayGrid = Vdecay(Ratek, Timek, Cash)
+    VGrid = Vdecay(Ratek, Timek, Cash)
 
-    Imaging = plt.contourf(Timek, Ratek, VdecayGrid)
+    Imaging = plt.contourf(Timek, Ratek, VGrid)
     plt.colorbar()
     plt.show()
     
-    return VdecayGrid
+    return VGrid
 
 VGrid(1000, 50, 0, 5, 0.1)
 
-print(VdecayGrid)
+print(VGrid)
 
 
 if  __name__ == "__main__":
