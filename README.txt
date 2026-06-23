@@ -1,6 +1,6 @@
 
 To push to git repository
-    Thomas - git push finmain main 
+    Thomas - git push origin main 
 (This is my personal remote i'm pushing from just as a reminder for me)
 
 The aims of this project
