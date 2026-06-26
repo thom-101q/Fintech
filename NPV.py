@@ -18,12 +18,18 @@ def PV(Rate, Time, FutureCash):
 
 # Costs = Function(cash)
 # Benefits = Function(FutureCash)
-def Benefits(B_Cashflow, B_Rate):
-    # any function Benefits
-    # develop way to imput the benefit of any project
-    # I'm gonna start with basic stream of compounding cash flows
+
+
+
+# def Benefits(B_Cashflow, B_Rate):
+#     # any function Benefits
+#     # develop way to imput the benefit of any project
+#     # I'm gonna start with basic stream of compounding cash flows
     
-    return B_Cashflow * (1 + B_Rate)**Time
+#     return B_Cashflow * (1 + B_Rate)**Time
+
+
+
 
 def Costs(Cost, Year):
     #Want a cost function just like benefits
@@ -36,34 +42,30 @@ def Costs(Cost, Year):
 
 
 
-Costs = Costs(5000, 3)
-Time = np.arange(0, 10, 1)
-
-Rate = 0.02
-
-Benefits = Benefits(1000, 0.08)
-
-#np.meshgrid does not work for three variables
-# K_Time, K_Costs = np.meshgrid(Time, Costs, indexing="ij")
 
 
-# This needs to go inside the final function for NPV
-for x in range(np.size(Time)):
-    Benefits[x] = PV(0.02, Time[x], Benefits[x])
-    Costs[x] = PV(0.02, Time[x], Costs[x])
-    print(Benefits[x])
+def NPV(Rate, B_Cashflow, B_Rate):
 
-def NPV():
-
-    NPV = np.sum(Benefts) - np.sum(Costs)
+    ArrCosts = Costs(5000, 3)
+    Time = np.arange(0, 10, 1)
+    Benefits = B_Cashflow * (1 + (B_Rate/100))**Time
+    
+    # This needs to go inside the final function for NPV
+    for x in range(np.size(Time)):
+        Benefits[x] = PV(Rate/100, Time[x], Benefits[x])
+        ArrCosts[x] = PV(Rate/100, Time[x], ArrCosts[x])
+        # print(Benefits[x])
+        # print(np.sum(ArrCosts))
+    NPV = np.sum(Benefits) - np.sum(ArrCosts)
+    return NPV
 
 # # NPV = PV(Benefits) - PV(Costs)
 # Var = PV(Rate, Time, Benefits) - PV(Rate, Time, Costs)
 
 # print(Var)
 
-
-
+# NPV(2, 1000, 8)
+# print(NPV)
 
 if __name__ == "__main__":
     print()
