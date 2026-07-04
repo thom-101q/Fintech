@@ -1,17 +1,19 @@
 #!/usr/bin/env python
 
-""" 
+"""
+
 This script calculates the net present value of a financial deal using numpy.
+It assumes a stream of cashflows for the Benefits parameters(size, rate, for all time) and a customisable Fixed cost taking parameters(size, time) repeating x amount of years from year 0.
 
-The goal is to make a interperatable function with easily adjusted parameters.
+These are two functions represented i want to make it easier to use a greater variety of options for benefits and costs, and not just these hardcoded functions.
 
-
-
+Maybe I should look at different financial scenarios in the textbook, and implement them.
 
 """
 import numpy as np
 import matplotlib.pyplot as plt
 
+#Maybe a function that defines functions for benefits/cost based on parameters?
 # Costs = Function(cash)
 # Benefits = Function(FutureCash)
 
